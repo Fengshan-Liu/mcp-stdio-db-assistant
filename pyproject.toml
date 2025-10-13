@@ -1,0 +1,20 @@
+[project]
+name = "stdio"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.116.1",
+    "loguru>=0.7.3",
+    "lxml>=6.0.0",
+    "mcp[cli]>=1.12.4",
+    "openai>=1.99.9",
+    "pymysql>=1.1.1",
+    "requests>=2.32.4",
+    "sqlalchemy>=2.0.43",
+]
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+default = true
+
