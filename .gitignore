@@ -5,21 +5,6 @@ build/
 dist/
 wheels/
 *.egg-info
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
 
 # Virtual environments
-.venv/
-venv/
-
-# Local environment files
-.env
-.env.*
-!.env.example
-
-# IDE / OS files
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+.venv
