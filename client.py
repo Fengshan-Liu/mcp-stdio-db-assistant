@@ -37,7 +37,7 @@ class MCPClient:
         
         # 环境变量配置
         self.API_KEY = os.getenv("API_KEY")
-        self.BASE_URL = os.getenv("BASE_URL")
+        self.BASE_URL = os.getenv("BASE_URL") or os.getenv("Base_URL")
         self.MODEL = os.getenv("MODEL")
         
         # 创建LLM client
