@@ -3,6 +3,7 @@ import mcp.types as types
 import os
 from threading import local
 import threading
+from dotenv import load_dotenv
 
 from sqlalchemy import (
     create_engine, MetaData, text, select, or_, String, Text, Integer, Column,BigInteger, Numeric, DateTime, DDL, Table
@@ -13,6 +14,14 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 import atexit
+
+load_dotenv(encoding="utf-8-sig")
+
+MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+MYSQL_PORT = int(os.getenv("MYSQL_PORT", "3306"))
+MYSQL_USER = os.getenv("MYSQL_USER", "root")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
+MYSQL_DEFAULT_DATABASE = os.getenv("MYSQL_DEFAULT_DATABASE", "app_db")
 
 
 # 加载系统prompt
@@ -91,7 +100,7 @@ def get_server_status() -> dict:
 # --- 数据库工具 ---
 
 @mcp.tool()
-def connect_to_database_and_list_tables(database: str ="scrb_test"):
+def connect_to_database_and_list_tables(database: str = MYSQL_DEFAULT_DATABASE):
     """连接到MySQL数据库并获取表列表
     
     重要提示：请遵循系统指导原则进行操作
@@ -109,7 +118,7 @@ def connect_to_database_and_list_tables(database: str ="scrb_test"):
 
     try:
         data.engine = create_engine(
-            f"mysql+pymysql://root:123456@localhost:3306/{database}",
+            f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{database}",
             poolclass=QueuePool,
             pool_size=3,  # 减少每个线程的连接池大小
             max_overflow=5,

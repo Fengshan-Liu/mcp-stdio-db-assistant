@@ -1,7 +1,7 @@
 [project]
-name = "stdio"
+name = "mcp-stdio-db-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "MCP stdio database assistant with FastAPI and OpenAI-compatible tool calling"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -10,11 +10,12 @@ dependencies = [
     "lxml>=6.0.0",
     "mcp[cli]>=1.12.4",
     "openai>=1.99.9",
+    "python-dotenv>=1.1.1",
     "pymysql>=1.1.1",
     "requests>=2.32.4",
     "sqlalchemy>=2.0.43",
+    "uvicorn>=0.35.0",
 ]
 [[tool.uv.index]]
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 default = true
-
